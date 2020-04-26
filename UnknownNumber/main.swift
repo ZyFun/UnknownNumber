@@ -20,6 +20,7 @@ var userNumber: String = ""
 var userAnswer: String = ""
 
 print(message["startGame"]!)
+//цикл начала игры с запросом продолжить либо выйти из игры
 repeat {
     print(message["go"]!)
     let myAnswer = readLine()
