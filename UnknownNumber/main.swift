@@ -8,5 +8,49 @@
 
 import Foundation
 
-print("Hello, World!")
+//Словарь сообщений
+let message = [
+    "start":"Введите вариант числа от 1 до 50 и нажмите Enter.",
+    "more":"Ваш вариант больше загаданного числа.",
+    "less":"Ваш вариант меньше загаданного числа.",
+    "win":"Вы угадали число!"]
 
+//Храним загаданное число в виде строки, чтобы избежать тройного преобразования:
+//1) результат функции readLine() из String? в String
+//2) полученный String в UInt8? с помощью UInt8(_:)
+//3) полученный UInt8? в UInt8 для сравнения с randomNumber
+//Генерация случайного числа
+let randomNumber = String(arc4random_uniform(50))
+//Введенное пользователем число
+var userNumber: String = ""
+//Цикл проверки
+repeat {
+    print(message["start"]!)
+    //Получение числа
+    let myNumber = readLine()
+    userNumber = myNumber ?? ""
+    if userNumber < randomNumber {
+        print(message["less"]!)
+    } else if userNumber > randomNumber {
+        print(message["more"]!)
+    }
+} while userNumber != randomNumber
+
+print(message["win"]!)
+
+
+/*
+//Цикл с постпроверкой условий
+repeat {
+    print("Введите ваш вариант и нажмите Enter.")
+    userNumber = readLine()
+    //Сравнение введенного и сгенерированного числа
+    if UInt8(userNumber!)! == randomNumber {
+        print("Вы угадали!")
+    } else if UInt8(userNumber!)! < randomNumber {
+        print("Ваш вариант меньше закаданного числа")
+    } else if UInt8(userNumber!)! > randomNumber {
+        print("Ваш вариант больше загаданного числа")
+    }
+} while randomNumber != UInt8(userNumber!)!
+*/
