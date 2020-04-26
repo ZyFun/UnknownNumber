@@ -23,17 +23,31 @@ let message = [
 let randomNumber = String(arc4random_uniform(50))
 //Введенное пользователем число
 var userNumber: String = ""
+//Ответ пользователя для входа и продолжения игры
+var userAnswer: String = ""
 //Цикл проверки
-repeat {
-    print(message["start"]!)
-    //Получение числа
-    let myNumber = readLine()
-    userNumber = myNumber ?? ""
-    if userNumber < randomNumber {
-        print(message["less"]!)
-    } else if userNumber > randomNumber {
-        print(message["more"]!)
-    }
-} while userNumber != randomNumber
+func startGame () {
+    repeat {
+        print(message["start"]!)
+        //Получение числа
+        let myNumber = readLine()
+        userNumber = myNumber ?? ""
+        if userNumber < randomNumber {
+            print(message["less"]!)
+        } else if userNumber > randomNumber {
+            print(message["more"]!)
+        }
+    } while userNumber != randomNumber
+    
+    print(message["win"]!)
+}
 
-print(message["win"]!)
+print("Добро пожаловать в игру 'Угадай число'")
+repeat {
+    print("Для того чтобы продолжить нажмите Enter. Для выхода введите Y")
+    let myAnswer = readLine()
+    userAnswer = myAnswer ?? ""
+    if userAnswer == "" {
+        startGame()
+    }
+} while userAnswer == ""
