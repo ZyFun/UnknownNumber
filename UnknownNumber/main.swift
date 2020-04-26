@@ -37,20 +37,3 @@ repeat {
 } while userNumber != randomNumber
 
 print(message["win"]!)
-
-
-/*
-//Цикл с постпроверкой условий
-repeat {
-    print("Введите ваш вариант и нажмите Enter.")
-    userNumber = readLine()
-    //Сравнение введенного и сгенерированного числа
-    if UInt8(userNumber!)! == randomNumber {
-        print("Вы угадали!")
-    } else if UInt8(userNumber!)! < randomNumber {
-        print("Ваш вариант меньше закаданного числа")
-    } else if UInt8(userNumber!)! > randomNumber {
-        print("Ваш вариант больше загаданного числа")
-    }
-} while randomNumber != UInt8(userNumber!)!
-*/
